@@ -23,10 +23,12 @@ window.onload = function() {
     c = canv.getContext("2d");
     document.addEventListener("keydown", keyPush);
 };
-
+var gameTime;
 function run() {
-    setInterval(draw, 1000 / speed);
+    clearInterval(gameTime);
+    gameTime = setInterval(draw, 1000 / speed);
     hideMenu();
+    show();
 }
 function nextLife() {
     snek.x = snek.y = 10;
@@ -35,7 +37,9 @@ function nextLife() {
     snek.xv = snek.yv = 0;
     snek.trail = [];
     snek.tail = 1;
-    deathScreen();
+    deaths++;
+    document.querySelector("a").innerHTML = "Try again?";
+    showMenu();
 }
 //nextLife();
 snek.x = snek.y = 10;
@@ -73,7 +77,7 @@ function draw() {
     c.fillStyle = snakeColor;
     for (var i = 0; i < snek.trail.length; i++) {
         c.fillRect(snek.trail[i].x * gs, snek.trail[i].y * gs, gs - 2, gs - 2);
-        if (snek.trail[i].x == snek.x && snek.trail[i].y == snek.y) {
+        if (snek.trail[i].x == snek.x && snek.trail[i].y == snek.y && document.getElementById("score").innerHTML != 0) {
             nextLife();
         }
     }
@@ -131,5 +135,7 @@ function hide() {
 }
 function hideMenu() {
     document.getElementById("start").style.display = 'none';
-    document.getElementById("click").style.display = 'none';
+}
+function showMenu() {
+    document.getElementById("start").style.display = 'inline';
 }
