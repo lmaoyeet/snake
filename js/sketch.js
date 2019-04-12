@@ -8,16 +8,8 @@ var pageColor = '#dcdde1';
 var backgroundColor = "#ffda79";
 var snakeColor = "#009432";
 var size = 20;
-var gs, tc = size;
 var deaths = 0;
-
-a.x, a.y = 15;
-
-// initialize the snake's values I guess
-snek.x, snek.y = 10;
-snek.xv=snek.yv = 0;
-snek.tail = 1;
-snek.trail = [];
+start(); // all other values that I don't want to write more than once
 
 window.onload = function() {
     canv = document.getElementById("canvas");
@@ -30,51 +22,36 @@ function run() {
     hideMenu();
     show();
 }
+function start() {
+    snek.x = snek.y = 10; // snake starting point
+    gs = tc = size; // boundaries of world
+    a.x = a.y = 15; // initialize apple coords
+    snek.xv = snek.yv = 0; // snake starting velocity
+    snek.trail = [];       // just the head exists
+    snek.tail = 1;         // ^
+}
 function init() {
     clearInterval(gameTime);
-    snek.x = snek.y = 10;
-    gs = tc = size;
-    a.x = a.y = 15;
-    snek.xv = snek.yv = 0;
-    snek.trail = [];
-    snek.tail = 1;
+    start();
     deaths++;
-    document.querySelector("a").innerHTML = "Try again?";
+    document.querySelector("a").innerHTML = "Try again? <br><br> Deaths: " + deaths;
     showMenu();
     c.fillStyle = pageColor;
     c.fillRect(0, 0, canv.width, canv.height);
 }
-//nextLife();
-snek.x = snek.y = 10;
-gs = tc = size;
-a.x = a.y = 15;
-snek.xv = snek.yv = 0;
-snek.trail = [];
-snek.tail = 1;
+
+// the main animation and stuff
 function draw() {
 
-    // for movement
+    // to start the snake in the directions by arrow keys ig
     snek.x += snek.xv;
     snek.y += snek.yv;
 
-    // to deal with the walls
-    if (snek.x < 0) {
-        snek.x = tc - 1;
-    }
-    else if (snek.x > tc - 1) {
-        snek.x = 0;
-    }
-    else if (snek.y < 0) {
-        snek.y = tc - 1;
-    }
-    else if (snek.y > tc - 1) {
-        snek.y = 0;
-    }
+    // to deal with the wall collisions
+    walls();
 
     // to draw background
-    c.fillStyle = backgroundColor;
-    c.fillRect(0, 0, canv.width, canv.height);
-
+    background(backgroundColor);
 
     // to draw snake
     c.fillStyle = snakeColor;
@@ -140,4 +117,22 @@ function hideMenu() {
 }
 function showMenu() {
     document.getElementById("start").style.display = 'inline';
+}
+function walls() {
+    if (snek.x < 0) {
+        snek.x = tc - 1;
+    }
+    else if (snek.x > tc - 1) {
+        snek.x = 0;
+    }
+    else if (snek.y < 0) {
+        snek.y = tc - 1;
+    }
+    else if (snek.y > tc - 1) {
+        snek.y = 0;
+    }
+}
+function background(cc) {
+    c.fillStyle = cc;
+    c.fillRect(0, 0, canv.width, canv.height);
 }
