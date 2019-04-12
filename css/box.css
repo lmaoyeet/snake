@@ -9,7 +9,7 @@
   filter:blur(3px);
   opacity:.5;
   transform: scale(.98);
-  margin-left: 42.8%;
+  /* margin-left: 42.8%; */
   text-align: center;
   margin-top: 10%;
   position: absolute;
@@ -23,5 +23,5 @@
 }
 .gameContainer {
     margin-top: 5%;
-    margin-left: -1%;
+    margin-left: -16%;
 }
