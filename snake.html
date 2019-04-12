@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Snaek</title>
+        <script src="js/apple.js"></script>
+        <script src="js/snake.js"></script>
+        <script src="js/sketch.js"></script>
+        <script src="js/deathScreen.js"></script>
+        <link rel="stylesheet" href="css/box.css">
+        <style>
+            body {
+                font-family: 'Press Start 2P', cursive;
+                background-color: #dcdde1;
+            }
+            canvas {
+                border: solid 4px black;
+            }
+            #score {
+                color: #74b9ff;
+            }
+            #game {
+                text-align: center;
+                position: absolute;
+                left: 50%;
+                /*
+                margin-left: -200px;
+                */
+                margin-left: -15%;
+                z-index: 1;
+                box-shadow: 0 2px 3px 0px rgba(0,0,0,0.25);
+                padding: 30px;
+            }
+            .menu {
+                z-index: 2;
+                position: absolute;
+                text-align: center;
+                color: #7f8fa6;
+                transition: all .2s ease-in-out;
+            }
+            .menu:hover {
+                transform: scale(1.3); /* make it a little bigger hovering over it */
+            }
+            #click {
+                display: none;
+            }
+            /* the rest of the css is in box.css */
+        </style>
+        <link href="https://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet"> <!-- good font i like -->
+        
+    </head>
+    <body>
+        <div class="gameContainer">
+            <div id="game">
+                <center>
+                    
+                    <p> SCORE: </p>
+                    <p id="score">0</p>
+                    
+                    <canvas id="canvas" width="400" height="400" style="padding: 10px"></canvas> <!-- to draw everything on-->
+                    
+                </center>
+                
+            </div>
+            <div id="start">
+                <a onclick="run();" class = "box"class="menu">Click to Start</a>
+                <a onclick="run();" id="click" class="box" class="menu">Try Again?</a>
+            </div>
+        </div>
+    </body>
+</html>
