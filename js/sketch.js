@@ -1,4 +1,8 @@
-// Variables
+
+
+// VARIABLES
+// --------------------------------
+// --------------------------------
 var snek = new Snake();                       // I declared the Snake constructor function in snake.js
 var a = new Apple();                          // make the item to pick up (apple)
 var highScore = 0;                            // initialize the highscore
@@ -18,7 +22,10 @@ window.onload = function() {
 };
 
 
-// the main animation and stuff
+// ANIMATION
+// --------------------------------
+// --------------------------------
+
 function draw() {
 
     // to set highscore variable
@@ -64,7 +71,9 @@ function draw() {
     updateScore();
 }
 
-
+// FUNCTIONS
+// --------------------------------
+// --------------------------------
 
 // update score
 function updateScore() {
