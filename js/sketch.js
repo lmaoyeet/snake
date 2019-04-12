@@ -4,6 +4,7 @@ var a = new Apple();
 
 var speed = 14;                               // twelve seems to be good sped
 var appleColor = "#d63031";
+var pageColor = '#dcdde1';
 var backgroundColor = "#ffda79";
 var snakeColor = "#009432";
 var size = 20;
@@ -25,12 +26,12 @@ window.onload = function() {
 };
 var gameTime;
 function run() {
-    clearInterval(gameTime);
     gameTime = setInterval(draw, 1000 / speed);
     hideMenu();
     show();
 }
-function nextLife() {
+function init() {
+    clearInterval(gameTime);
     snek.x = snek.y = 10;
     gs = tc = size;
     a.x = a.y = 15;
@@ -40,6 +41,8 @@ function nextLife() {
     deaths++;
     document.querySelector("a").innerHTML = "Try again?";
     showMenu();
+    c.fillStyle = pageColor;
+    c.fillRect(0, 0, canv.width, canv.height);
 }
 //nextLife();
 snek.x = snek.y = 10;
@@ -78,7 +81,7 @@ function draw() {
     for (var i = 0; i < snek.trail.length; i++) {
         c.fillRect(snek.trail[i].x * gs, snek.trail[i].y * gs, gs - 2, gs - 2);
         if (snek.trail[i].x == snek.x && snek.trail[i].y == snek.y && document.getElementById("score").innerHTML != 0) {
-            nextLife();
+            init();
         }
     }
     snek.trail.push({
@@ -99,7 +102,6 @@ function draw() {
     // apples collected
     updateScore();
 }
-
 function updateScore() {
     document.getElementById("score").innerHTML = snek.tail - 1;
 }
