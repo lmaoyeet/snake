@@ -3,7 +3,7 @@ var snek = new Snake();                       // I declared the Snake constructo
 var a = new Apple();
 
 var speed = 14;                               // twelve seems to be good sped
-var appleColor = "#ff5252";
+var appleColor = "#d63031";
 var backgroundColor = "#ffda79";
 var snakeColor = "#009432";
 var size = 20;
