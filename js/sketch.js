@@ -6,7 +6,7 @@
 var snek = new Snake();                       // I declared the Snake constructor function in snake.js
 var a = new Apple();                          // make the item to pick up (apple)
 var highScore = 0;                            // initialize the highscore
-var speed = 14;                               // twelve seems to be good sped
+var speed = 18;                               // twelve seems to be good sped
 var appleColor = "#d63031";                   // color of item to pick up
 var pageColor = '#dcdde1';                    // color of page background
 var backgroundColor = "#ffda79";              // color of game background
